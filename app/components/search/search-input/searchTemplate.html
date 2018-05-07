@@ -1,7 +1,24 @@
 <!DOCTYPE html>
-<form ng-submit="null" autocomplete="off">
-    <md-input-container md-no-float class="md-no-error md-primary" md-colors="{background: 'background'}" style=" border-radius: 10px; padding-right: 10px">
-        <md-icon md-svg-icon="magnify" md-colors="{fill: 'primary'}"></md-icon>
-        <input ng-model="test" placeholder="Search for user">
-    </md-input-container>
-</form>
+<!--<form ng-submit="null" autocomplete="off">-->
+    <!--<md-input-container md-no-float class="md-no-error md-primary" md-colors="{background: 'background'}" style=" border-radius: 10px; padding-right: 10px">-->
+        <!--<md-icon md-svg-icon="magnify" md-colors="{fill: 'primary'}"></md-icon>-->
+        <!--<input ng-model="test" placeholder="Search for user">-->
+    <!--</md-input-container>-->
+<!--</form>-->
+
+<md-autocomplete
+        md-selected-item="$ctrl.selectedItem"
+        md-selected-item-change="$ctrl.selectedItemChange(item)"
+        md-search-text="$ctrl.searchText"
+        md-search-text-change="$ctrl.searchTextChange($ctrl.searchText)"
+        md-items="item in $ctrl.querySearch($ctrl.searchText)"
+        md-item-text="item.display"
+        md-min-length="0"
+        placeholder="Search for User">
+    <md-item-template>
+        <span md-highlight-text="$ctrl.searchText" md-highlight-flags="^i">{{item.name}}</span>
+    </md-item-template>
+    <md-not-found>
+        No states matching "{{$ctrl.searchText}}" were found.
+    </md-not-found>
+</md-autocomplete>
