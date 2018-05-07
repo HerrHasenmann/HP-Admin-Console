@@ -8,3 +8,7 @@ md-divider {
     border-top: 1px solid !important;
     border-right: 1px solid !important;
 }
+
+md-list-item md-icon {
+    margin: initial;
+}
