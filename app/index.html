@@ -2,15 +2,44 @@
 <html ng-app="app" ng-controller="RootController" lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title ng-controller="TitleController" ng-bind="title.value"></title>
     <link rel="stylesheet" href="./node_modules/angular-material/angular-material.min.css">
     <link rel="stylesheet" href="./assets/css/styles.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
 </head>
-<body ng-cloak>
+<body layout="row" ng-cloak ng-controller="SidenavController">
+
+
+
+
+<md-sidenav md-component-id="left" class="md-sidenav-left" md-is-locked-open="$mdMedia('gt-sm')" md-whiteframe="4">
+    <md-toolbar md-whiteframe="4"  md-colors="{background: 'grey-100'}">
+        <div class="md-toolbar-tools" style="padding-left: 0;">
+            <img ng-src="./assets/img/conrad_business_logo_regular.svg" style="max-height: 100%; padding: 8px">
+        </div>
+    </md-toolbar>
+
+    Sidenav
+</md-sidenav>
+
+<md-content flex layout="column">
+    <md-toolbar md-whiteframe="8">
+        <div class="md-toolbar-tools">
+
+            <md-button show-xs show-sm hide class="md-icon-button" ng-click="toggleSidenav()">
+                <md-icon md-svg-icon="menu"></md-icon>
+            </md-button>
+
+            <search></search>
+        </div>
+    </md-toolbar>
+    Center Content
+</md-content>
+
 
 <!-- TODO add application + routes in app-config.js -->
-<div ng-view></div>
+<!--<div ng-view></div>-->
 
 <!-- AngularJS -->
 <script src="./node_modules/angular/angular.min.js"></script>
@@ -29,9 +58,11 @@
 <script src="./shared/root/RootController.min.js"></script>
 <script src="./shared/title/TitleController.min.js"></script>
 <script src="./shared/title/TitleService.min.js"></script>
+<script src="./components/sidenav/SidenavController.js"></script>
 
 <!-- Components -->
 <script src="./components/default/defaultComponent.js"></script>
+<script src="./components/search/search-input/searchComponent.js"></script>
 
 </body>
 </html>
