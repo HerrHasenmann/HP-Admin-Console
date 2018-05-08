@@ -1,4 +1,4 @@
-app.controller("RootController", ["$rootScope", function ($rootScope) {
+app.controller("RootController", ["$rootScope", "$mdMedia", function ($rootScope, $mdMedia) {
 
     $rootScope.safeApply = function(fn) {
         var phase = this.$root.$$phase;
@@ -10,5 +10,7 @@ app.controller("RootController", ["$rootScope", function ($rootScope) {
             this.$apply(fn);
         }
     };
+
+    $rootScope.$mdMedia = $mdMedia;
 
 }]);

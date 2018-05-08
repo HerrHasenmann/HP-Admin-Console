@@ -1,4 +1,4 @@
-app.service("UserSearchService", ["$http", function ($http) {
+app.service("UserSearchService", ["$http", "toArrayFilter", "$timeout", function ($http, toArrayFilter, $timeout) {
 
     var users = {
         "4d4a9c51-7b43-4fed-b9e4-57ce1b259687": {
@@ -111,7 +111,38 @@ app.service("UserSearchService", ["$http", function ($http) {
         }
     };
 
-    this.getUsers = function () {
-        return users;
+    this.getUsers = function (searchText) {
+
+        return new Promise(function (resolve, reject) {
+
+            $timeout(function () {
+                resolve(toArrayFilter(users).filter(createUserFilter(searchText)));
+            }, getRandom(200, 1000));
+
+
+        });
+
+    };
+    
+    function getRandom(lowerBound, upperBound) {
+        return (Math.random() * (upperBound - lowerBound)) + lowerBound;
+    }
+
+    function createUserFilter(searchText){
+
+        searchText = searchText.toLowerCase();
+
+        return function (user) {
+            var properties = ["name", "username", "ociCustomerNumber"];
+
+            var property;
+            for(var i = 0; i < properties.length; i++){
+
+                property = properties[i];
+                if(user[property].toString().toLowerCase().indexOf(searchText) != -1){
+                    return true;
+                }
+            }
+        }
     }
 }]);

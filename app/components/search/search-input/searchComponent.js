@@ -1,9 +1,9 @@
 app.component("search", {
     templateUrl: "./components/search/search-input/searchTemplate.html",
-    controller: ["UserSearchService", SearchController]
+    controller: ["UserSearchService", "$mdMedia", SearchController]
 });
 
-function SearchController(UserSearchService) {
+function SearchController(UserSearchService, $mdMedia) {
     var ctrl = this;
 
     ctrl.selectedItem;
@@ -18,7 +18,16 @@ function SearchController(UserSearchService) {
     };
 
     ctrl.querySearch = function (searchText) {
-        console.log(searchText);
-        return UserSearchService.getUsers();
+        return UserSearchService.getUsers(searchText);
     };
+
+    ctrl.placaholder="test";
+
+    ctrl.getPlaceholder = function () {
+        return $mdMedia('xs') ? 'Search for User' : 'Search for User by Name, Username, OCI-Number'
+    }
+
+    ctrl.getStyle = function () {
+        return $mdMedia('xs') ? {'width':'inherit'} : {'width': '380px'};
+    }
 }
