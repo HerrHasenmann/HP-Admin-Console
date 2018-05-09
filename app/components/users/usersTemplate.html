@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<div layout-margin>
+    <span class="md-headline">Search Results</span>
+
+    <div ng-repeat="user in $ctrl.users()" layout="column">
+        <span>{{user.name}}</span>
+        <span>{{user.username}}</span>
+        <span>{{user.password}}</span>
+    </div>
+
+    {{$ctrl.userService}}
+</div>

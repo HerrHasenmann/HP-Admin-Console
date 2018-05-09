@@ -13,4 +13,5 @@ app.controller("RootController", ["$rootScope", "$mdMedia", function ($rootScope
 
     $rootScope.$mdMedia = $mdMedia;
 
+    
 }]);

@@ -1,5 +1,8 @@
-app.service("UserSearchService", ["$http", "toArrayFilter", "$timeout", function ($http, toArrayFilter, $timeout) {
+app.service("UserService", ["$rootScope", "$http", "toArrayFilter", "$timeout", function ($rootScope, $http, toArrayFilter, $timeout) {
 
+    var serv = this;
+
+    // Mock data
     var users = {
         "4d4a9c51-7b43-4fed-b9e4-57ce1b259687": {
             "id": "4d4a9c51-7b43-4fed-b9e4-57ce1b259687",
@@ -43,7 +46,7 @@ app.service("UserSearchService", ["$http", "toArrayFilter", "$timeout", function
             "country": "LR",
             "ociCustomerNumber": 72948566,
             "username": "danielwynn@genesynk.com",
-            "password": "test123",
+            "password": "test321",
             "discount": "14%",
             "fixedPricelist": false,
             "marginCheck": false,
@@ -79,7 +82,7 @@ app.service("UserSearchService", ["$http", "toArrayFilter", "$timeout", function
             "country": "NE",
             "ociCustomerNumber": 53333205,
             "username": "wallsmaynard@empirica.com",
-            "password": "test123",
+            "password": "test12345",
             "discount": "10%",
             "fixedPricelist": false,
             "marginCheck": false,
@@ -111,19 +114,40 @@ app.service("UserSearchService", ["$http", "toArrayFilter", "$timeout", function
         }
     };
 
-    this.getUsers = function (searchText) {
+    serv.data = {
+        searchText: "",
+        results: users
+    };
+    serv.results = users;
+
+    var selectedUser = "test";
+
+    serv.searchUsers = function (searchText) {
+
+        serv.data.searchText = searchText;
 
         return new Promise(function (resolve, reject) {
 
-            $timeout(function () {
-                resolve(toArrayFilter(users).filter(createUserFilter(searchText)));
-            }, getRandom(200, 1000));
+            $rootScope.safeApply(function () {
+                $timeout(function () {
+                    serv.data.results = toArrayFilter(users).filter(createUserFilter(searchText));
+                    serv.results = toArrayFilter(users).filter(createUserFilter(searchText));
 
-
+                    resolve(toArrayFilter(users).filter(createUserFilter(searchText)));
+                }, getRandom(200, 1000));
+            });
         });
 
     };
-    
+
+    serv.getSelectedUser = function () {
+        return selectedUser;
+    };
+
+    serv.setSelectedUser = function (user) {
+        selectedUser = user;
+    };
+
     function getRandom(lowerBound, upperBound) {
         return (Math.random() * (upperBound - lowerBound)) + lowerBound;
     }
@@ -145,4 +169,9 @@ app.service("UserSearchService", ["$http", "toArrayFilter", "$timeout", function
             }
         }
     }
+
+    function init() {
+        serv.searchUsers("");
+    }
+    init();
 }]);

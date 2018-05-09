@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title ng-controller="TitleController" ng-bind="title.value"></title>
     <link rel="stylesheet" href="./node_modules/angular-material/angular-material.min.css">
+    <link rel="stylesheet" href="./node_modules/angular-material-data-table/dist/md-data-table.min.css">
     <link rel="stylesheet" href="./assets/css/styles.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
 </head>
@@ -46,6 +47,8 @@
 
             <search></search>
 
+            <span>{{selectedUser}}</span>
+
             <span flex></span>
 
             <md-button ng-class="{'md-icon-button':$mdMedia('xs')}">
@@ -55,7 +58,9 @@
 
         </div>
     </md-toolbar>
-    Center Content
+
+    <users></users>
+
 </md-content>
 
 
@@ -70,6 +75,7 @@
 
 <!-- Material Angular -->
 <script src="./node_modules/angular-material/angular-material.min.js"></script>
+<script src="./node_modules/angular-material-data-table/dist/md-data-table.min.js"></script>
 
 <!-- Javascript of application-->
 <script src="./app.module.min.js"></script>
@@ -82,7 +88,7 @@
 <script src="./components/sidenav/SidenavController.min.js"></script>
 
 <!-- Services -->
-<script src="./components/search/UserSearchService.min.js"></script>
+<script src="components/users/UserService.min.js"></script>
 
 <!-- Filtetr -->
 <script src="./shared/to-array/toArrayFilter.min.js"></script>
@@ -90,6 +96,7 @@
 <!-- Components -->
 <script src="./components/default/defaultComponent.min.js"></script>
 <script src="./components/search/search-input/searchComponent.min.js"></script>
+<script src="./components/users/usersComponent.min.js"></script>
 
 </body>
 </html>
