@@ -2,11 +2,32 @@
 <div layout-margin>
     <span class="md-headline">Search Results</span>
 
-    <div ng-repeat="user in $ctrl.users()" layout="column">
-        <span>{{user.name}}</span>
-        <span>{{user.username}}</span>
-        <span>{{user.password}}</span>
-    </div>
+    <md-table-container>
+        <table md-table>
+            <thead md-head md-order="$ctrl.query.order" md-on-reorder="$ctrl.getUsers()">
+                <tr md-row>
+                    <th md-column><span>Name</span></th>
+                    <th md-column><span>Username</span></th>
+                    <th md-column>Password</th>
+                    <th md-column>Customer Contact</th>
+                    <th md-column>Conrad Contact</th>
+                    <th md-column>Exclusions</th>
+                    <th md-column>Discount</th>
+                </tr>
+            </thead>
+            <tbody md-body>
+                <tr md-row md-select="user" md-select-id="username" md-auto-select ng-repeat="user in $ctrl.users()">
+                    <td md-cell>{{user.name}}</td>
+                    <td md-cell>{{user.username}}</td>
+                    <td md-cell>{{user.password}}</td>
+                    <td md-cell>{{user.details.contactPerson.email}}</td>
+                    <td md-cell>{{user.details.sales.responsibleInternal}}</td>
+                    <td md-cell>{{user.exclusions}}</td>
+                    <td md-cell>{{user.discount}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </md-table-container>
 
-    {{$ctrl.userService}}
+    <md-table-pagination md-limit="$ctrl.query.limit" md-limit-options="[5, 10, 15]" md-page="$ctrl.query.page" md-total="{{$ctrl.users.length}}" md-on-paginate="getUsers" md-page-select></md-table-pagination>
 </div>

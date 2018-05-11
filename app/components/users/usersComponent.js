@@ -7,15 +7,19 @@ function UsersController(UserService, $scope) {
     var ctrl = this;
 
     ctrl.users = function () {
-        return UserService.results;
+        return UserService.getSearchResults();
     };
 
-    ctrl.userService = UserService;
+    // Data-Table
+    ctrl.selectedlected = [];
 
-    // $scope.$watch(function () {
-    //     return UserService.search.results
-    // }, function (newResult) {
-    //     console.log(newResult);
-    //     ctrl.users = newResult;
-    // });
+    ctrl.query = {
+        order: 'name',
+        limit: 5,
+        page: 1
+    };
+
+    ctrl.getUsers = function () {
+        console.log("getUsers called...")
+    }
 }

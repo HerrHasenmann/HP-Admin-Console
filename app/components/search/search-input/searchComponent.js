@@ -10,14 +10,17 @@ function SearchController(UserService, $mdMedia) {
     ctrl.searchText;
 
     ctrl.setSelectedUser = function (item) {
-        UserService.setSelectedUser(item);
+        console.log("setSelectedItem called..." + item);
+        if (item) {
+            UserService.setSelectedUser(item);
+        }else{
+            UserService.searchUsers("");
+        }
     };
 
     ctrl.querySearch = function (searchText) {
         return UserService.searchUsers(searchText);
     };
-
-    ctrl.placaholder="test";
 
     ctrl.getPlaceholder = function () {
         return $mdMedia('xs') ? 'Search for User' : 'Search for User by Name, Username, OCI-Number'

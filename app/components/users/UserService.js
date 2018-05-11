@@ -114,25 +114,21 @@ app.service("UserService", ["$rootScope", "$http", "toArrayFilter", "$timeout", 
         }
     };
 
-    serv.data = {
+    var data = {
         searchText: "",
-        results: users
+        searchResults: [],
+        selectedUser: null
     };
-    serv.results = users;
-
-    var selectedUser = "test";
 
     serv.searchUsers = function (searchText) {
 
-        serv.data.searchText = searchText;
+        data.searchText = searchText;
 
         return new Promise(function (resolve, reject) {
 
             $rootScope.safeApply(function () {
                 $timeout(function () {
-                    serv.data.results = toArrayFilter(users).filter(createUserFilter(searchText));
-                    serv.results = toArrayFilter(users).filter(createUserFilter(searchText));
-
+                    data.searchResults = toArrayFilter(users).filter(createUserFilter(searchText));
                     resolve(toArrayFilter(users).filter(createUserFilter(searchText)));
                 }, getRandom(200, 1000));
             });
@@ -140,12 +136,20 @@ app.service("UserService", ["$rootScope", "$http", "toArrayFilter", "$timeout", 
 
     };
 
-    serv.getSelectedUser = function () {
-        return selectedUser;
+    serv.getSearchText = function () {
+        return data.searchText;
     };
 
+    serv.getSearchResults = function () {
+        return data.searchResults;
+    };
+    
+    serv.getSelectedUser = function () {
+        return data.selectedUser;
+    };
+    
     serv.setSelectedUser = function (user) {
-        selectedUser = user;
+        data.selectedUser = user;
     };
 
     function getRandom(lowerBound, upperBound) {

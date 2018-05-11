@@ -5,6 +5,4 @@ app.controller("SidenavController", ["$scope","$mdSidenav", "UserService", funct
     $scope.toggleSidenav = function () {
         $mdSidenav('left').toggle();
     };
-
-    $scope.selectedUser = UserService.getSelectedUser();
 }]);
