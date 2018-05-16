@@ -3,7 +3,7 @@ app.component("users", {
     controller: ["UserService", "$scope", UsersController]
 });
 
-function UsersController(UserService, $scope) {
+function UsersController(UserService) {
     var ctrl = this;
 
     ctrl.users = function () {
@@ -11,15 +11,27 @@ function UsersController(UserService, $scope) {
     };
 
     // Data-Table
-    ctrl.selectedlected = [];
+
+    ctrl.selected = [];
 
     ctrl.query = {
         order: 'name',
-        limit: 5,
+        limit: 10,
         page: 1
     };
 
-    ctrl.getUsers = function () {
-        console.log("getUsers called...")
+    ctrl.options = {
+        autoSelect: true,
+        rowSelect: true,
+        pageSelect: true,
+        limitOptions: [10,20,30]
+    };
+
+    ctrl.selectUser = function(user){
+        UserService.setSelectedUser(user)
+    };
+    
+    ctrl.selectedUser = function () {
+        return UserService.getSelectedUser();
     }
 }

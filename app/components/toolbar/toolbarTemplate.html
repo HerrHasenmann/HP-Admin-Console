@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<md-toolbar md-whiteframe="4">
+    <div class="md-toolbar-tools">
+
+        <md-button show-xs show-sm hide class="md-icon-button" ng-click="$ctrl.toggleSidenav()">
+            <md-icon md-svg-icon="menu"></md-icon>
+        </md-button>
+
+        <span>{{'TEST'|translate}}</span>
+
+        <span hide-xs ng-if="$ctrl.selectedUser()" style="padding-right: 8px">Selected User: </span>
+
+        <md-chips md-readonly ng-if="$ctrl.selectedUser()">
+            <md-chip layout="row" layout-no-wrap>
+                <span>{{$ctrl.selectedUser().name}}</span>
+                <span hide-xs> - {{$ctrl.selectedUser().username}}</span>
+                <md-button class="md-icon-button" ng-click="$ctrl.unSelectUser()" style="padding: 0; margin: 0; height: unset; min-height: unset">
+                    <md-icon md-svg-icon="close" style="fill: rgb(97,97,97);"></md-icon>
+                </md-button>
+            </md-chip>
+        </md-chips>
+
+        <span flex></span>
+
+        <md-button ng-class="{'md-icon-button':$root.$mdMedia('xs')}" ng-if="$ctrl.showCreateButton()">
+            <md-icon md-svg-icon="account-plus"></md-icon>
+            <span hide-xs>create user</span>
+        </md-button>
+
+    </div>
+</md-toolbar>

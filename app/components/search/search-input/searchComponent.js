@@ -1,6 +1,9 @@
-app.component("search", {
-    templateUrl: "./components/search/search-input/searchTemplate.html",
-    controller: ["UserService", "$mdMedia", SearchController]
+app.component("searchInput", {
+    templateUrl: "./components/search/search-input/searchInputTemplate.html",
+    controller: ["UserService", "$mdMedia", SearchController],
+    bindings: {
+        noDropdown: "<"
+    }
 });
 
 function SearchController(UserService, $mdMedia) {
@@ -10,7 +13,7 @@ function SearchController(UserService, $mdMedia) {
     ctrl.searchText;
 
     ctrl.setSelectedUser = function (item) {
-        console.log("setSelectedItem called..." + item);
+        console.log("triggered setselectedUser");
         if (item) {
             UserService.setSelectedUser(item);
         }else{
@@ -28,5 +31,6 @@ function SearchController(UserService, $mdMedia) {
 
     ctrl.getStyle = function () {
         return $mdMedia('xs') ? {'width':'inherit'} : {'width': '380px'};
-    }
+    };
+
 }

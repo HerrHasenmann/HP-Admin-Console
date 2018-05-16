@@ -2,7 +2,7 @@ app.controller("TitleController", ["$scope", "titleService", function ($scope, t
 
     $scope.title = titleService.title;
     function init() {
-        titleService.setTitle("App Title");
+        titleService.setTitle("Management Area");
     }
     init();
 }]);

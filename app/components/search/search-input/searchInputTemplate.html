@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+
+<div ng-if="$ctrl.noDropdown"
+     layout="row"
+     md-colors="{background: 'background'}"
+     ng-style="$ctrl.getStyle()"
+     md-whiteframe="1">
+    <input class="search-input" ng-model="$ctrl.searchText" ng-change="$ctrl.querySearch($ctrl.searchText)" placeholder="{{$ctrl.getPlaceholder()}}">
+</div>
+
+<md-autocomplete
+        ng-if="!$ctrl.noDropdown"
+        md-selected-item="$ctrl.selectedItem"
+        md-search-text="$ctrl.searchText"
+        md-items="item in $ctrl.querySearch($ctrl.searchText)"
+        md-item-text="item.username"
+        md-selected-item-change="$ctrl.setSelectedUser(item)"
+        md-no-cache="true"
+        placeholder="{{$ctrl.getPlaceholder()}}"
+        ng-style="$ctrl.getStyle()"
+        md-menu-class="autocomplete-custom-template">
+    <md-item-template>
+        <div layout="column">
+            <div>
+                <md-icon md-svg-icon="account"></md-icon>
+                <span md-highlight-text="$ctrl.searchText">{{item.name}}</span>
+            </div>
+            <div>
+                <md-icon md-svg-icon="at"></md-icon>
+                <span md-highlight-text="$ctrl.searchText">{{item.username}}</span>
+            </div>
+        </div>
+    </md-item-template>
+    <md-not-found>
+        No matches found.
+    </md-not-found>
+</md-autocomplete>

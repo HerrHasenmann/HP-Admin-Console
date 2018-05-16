@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<div layout-margin>
+    <span>Please select a user first:</span>
+
+    <div layout="row">
+        <md-card layout-margin>
+            <span>Either by directly searching:</span>
+            <search-input></search-input>
+        </md-card>
+        <md-card layout-margin>
+            <span>Or choosing from the list of available users</span>
+            <md-button class="md-primary" ng-click="$ctrl.gotoUsers()">
+                Goto User List
+                <md-icon md-svg-icon="arrow-right"></md-icon>
+            </md-button>
+        </md-card>
+    </div>
+
+</div>

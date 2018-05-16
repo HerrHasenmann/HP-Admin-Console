@@ -28,7 +28,26 @@ app.config(["$mdThemingProvider", function ($mdThemingProvider) {
 app.config(["$routeProvider", function ($routeProvider) {
     $routeProvider
         .when("/", {
-            template : "<default></default>"
-        })
-        .otherwise("/");
+            redirectTo: "/users"
+        }).when("/users", {
+            template: "<users></users>"
+        }).when("/settings", {
+            template: "<settings></settings>"
+        }).when("/mappings", {
+            template: "<mappings></mappings>"
+        }).when("/exclusions", {
+            template: "<exclusions></exclusions>"
+        });
+
+    $routeProvider.otherwise("/");
+}]);
+
+app.config(['$translateProvider', function($translateProvider) {
+    $translateProvider.useStaticFilesLoader({
+        prefix: './i18n/locale-',
+        suffix: '.json'
+    });
+    $translateProvider.preferredLanguage('en');
+
+    $translateProvider.useSanitizeValueStrategy(null);
 }]);

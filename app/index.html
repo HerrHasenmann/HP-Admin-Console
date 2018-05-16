@@ -4,72 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title ng-controller="TitleController" ng-bind="title.value"></title>
+    <link rel="stylesheet" href="./assets/css/styles.min.css">
     <link rel="stylesheet" href="./node_modules/angular-material/angular-material.min.css">
     <link rel="stylesheet" href="./node_modules/angular-material-data-table/dist/md-data-table.min.css">
-    <link rel="stylesheet" href="./assets/css/styles.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
 </head>
-<body layout="row" ng-cloak ng-controller="SidenavController">
+<body layout="row" ng-cloak>
 
+<sidenav layout="column"></sidenav>
 
+<div flex layout="column">
+    <toolbar></toolbar>
 
+    <md-content>
+        <div ng-view></div>
+    </md-content>
 
-<md-sidenav md-component-id="left" class="md-sidenav-left" md-is-locked-open="$mdMedia('gt-sm')" md-whiteframe="4" style="width: 256px">
-    <md-toolbar md-whiteframe="4"  md-colors="{background: 'grey-100'}">
-        <div class="md-toolbar-tools" style="padding-left: 0;" layout="row" layout-align="center center">
-            <img ng-src="./assets/img/conrad_business_logo_regular.svg" style="max-height: 100%; padding: 8px">
-        </div>
-    </md-toolbar>
-
-    <md-list>
-        <md-list-item ng-click="null" layout="row" layout-align="start center">
-            <md-icon md-svg-icon="settings"></md-icon>
-            Settings
-        </md-list-item>
-        <md-list-item ng-click="null">
-            <md-icon md-svg-icon="chart-gantt"></md-icon>
-            Mappings
-        </md-list-item>
-        <md-list-item ng-click="null">
-            <md-icon md-svg-icon="file-tree"></md-icon>
-            Exclusions
-        </md-list-item>
-    </md-list>
-</md-sidenav>
-
-<md-content flex layout="column">
-    <md-toolbar md-whiteframe="8">
-        <div class="md-toolbar-tools">
-
-            <md-button show-xs show-sm hide class="md-icon-button" ng-click="toggleSidenav()">
-                <md-icon md-svg-icon="menu"></md-icon>
-            </md-button>
-
-            <search></search>
-
-            <span flex></span>
-
-            <md-button ng-class="{'md-icon-button':$mdMedia('xs')}">
-                <md-icon md-svg-icon="plus"></md-icon>
-                <span hide-xs>create user</span>
-            </md-button>
-
-        </div>
-    </md-toolbar>
-
-    <users></users>
-
-</md-content>
-
-
-<!-- TODO add application + routes in app-config.js -->
-<!--<div ng-view></div>-->
+</div>
 
 <!-- AngularJS -->
 <script src="./node_modules/angular/angular.min.js"></script>
 <script src="./node_modules/angular-aria/angular-aria.min.js"></script>
 <script src="./node_modules/angular-animate/angular-animate.min.js"></script>
 <script src="./node_modules/angular-route/angular-route.min.js"></script>
+<script src="./node_modules/angular-translate/dist/angular-translate.min.js"></script>
+<script src="./node_modules/angular-translate/dist/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
 
 <!-- Material Angular -->
 <script src="./node_modules/angular-material/angular-material.min.js"></script>
@@ -83,10 +42,11 @@
 <script src="./shared/root/RootController.min.js"></script>
 <script src="./shared/title/TitleController.min.js"></script>
 <script src="./shared/title/TitleService.min.js"></script>
-<script src="./components/sidenav/SidenavController.min.js"></script>
 
 <!-- Services -->
-<script src="components/users/UserService.min.js"></script>
+<script src="./components/users/UserService.min.js"></script>
+<script src="./shared/routes/RouteService.min.js"></script>
+<script src="./shared/translation/TranslationService.min.js"></script>
 
 <!-- Filtetr -->
 <script src="./shared/to-array/toArrayFilter.min.js"></script>
@@ -95,6 +55,12 @@
 <script src="./components/default/defaultComponent.min.js"></script>
 <script src="./components/search/search-input/searchComponent.min.js"></script>
 <script src="./components/users/usersComponent.min.js"></script>
+<script src="./components/toolbar/toolbarComponent.min.js"></script>
+<script src="./components/sidenav/sidenavComponent.min.js"></script>
+<script src="./components/settings/settingsComponent.min.js"></script>
+<script src="./components/mappings/mappingsComponent.min.js"></script>
+<script src="./components/exclusions/exclusionsComponent.min.js"></script>
+<script src="./components/no-user-selected/noUserSelectedComponent.min.js"></script>
 
 </body>
 </html>

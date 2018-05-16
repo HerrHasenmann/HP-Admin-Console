@@ -1,33 +1,50 @@
 <!DOCTYPE html>
-<div layout-margin>
-    <span class="md-headline">Search Results</span>
+<div>
 
-    <md-table-container>
-        <table md-table>
-            <thead md-head md-order="$ctrl.query.order" md-on-reorder="$ctrl.getUsers()">
-                <tr md-row>
-                    <th md-column><span>Name</span></th>
-                    <th md-column><span>Username</span></th>
-                    <th md-column>Password</th>
-                    <th md-column>Customer Contact</th>
-                    <th md-column>Conrad Contact</th>
-                    <th md-column>Exclusions</th>
-                    <th md-column>Discount</th>
-                </tr>
-            </thead>
-            <tbody md-body>
-                <tr md-row md-select="user" md-select-id="username" md-auto-select ng-repeat="user in $ctrl.users()">
-                    <td md-cell>{{user.name}}</td>
-                    <td md-cell>{{user.username}}</td>
-                    <td md-cell>{{user.password}}</td>
-                    <td md-cell>{{user.details.contactPerson.email}}</td>
-                    <td md-cell>{{user.details.sales.responsibleInternal}}</td>
-                    <td md-cell>{{user.exclusions}}</td>
-                    <td md-cell>{{user.discount}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </md-table-container>
+    <md-card>
 
-    <md-table-pagination md-limit="$ctrl.query.limit" md-limit-options="[5, 10, 15]" md-page="$ctrl.query.page" md-total="{{$ctrl.users.length}}" md-on-paginate="getUsers" md-page-select></md-table-pagination>
+        <div layout-margin layout="row" layout-align="space-between center">
+            <search-input no-dropdown="true"></search-input>
+            <md-button class="md-raised md-primary" ng-class="{'md-icon-button':$root.$mdMedia('xs')}">
+                <md-icon md-svg-icon="account-plus"></md-icon>
+                <span hide-xs>create user</span>
+            </md-button>
+        </div>
+
+        <md-table-container>
+            <table md-table md-row-select="$ctrl.options.rowSelect" ng-model="$ctrl.selected">
+                <thead md-head md-order="$ctrl.query.order">
+                    <tr md-row>
+                        <th md-column></th>
+                        <th md-column md-order-by="name"><span>Name</span></th>
+                        <th md-column md-order-by="username"><span>Username</span></th>
+                        <th md-column md-order-by="password">Password</th>
+                        <th md-column md-order-by="details.contactPerson.email">Customer Contact</th>
+                        <th md-column md-order-by="details.sales.responsibleInternal">Conrad Contact</th>
+                        <th md-column md-order-by="exclusions">Exclusions</th>
+                        <th md-column md-order-by="discount">Discount</th>
+                    </tr>
+                </thead>
+                <tbody md-body>
+                    <tr md-row ng-click="$ctrl.selectUser(user)" md-auto-select="$ctrl.options.autoSelect" ng-repeat="user in $ctrl.users() | orderBy: $ctrl.query.order | limitTo: $ctrl.query.limit : ($ctrl.query.page -1) * $ctrl.query.limit" style="cursor: pointer">
+                        <td md-cell>
+                            <div style="width: 24px">
+                                <md-icon md-svg-icon="check" ng-show="$ctrl.selectedUser().id == user.id"></md-icon>
+                            </div>
+                        </td>
+                        <td md-cell>{{user.name}}</td>
+                        <td md-cell>{{user.username}}</td>
+                        <td md-cell>{{user.password}}</td>
+                        <td md-cell>{{user.details.contactPerson.email}}</td>
+                        <td md-cell>{{user.details.sales.responsibleInternal}}</td>
+                        <td md-cell>{{user.exclusions}}</td>
+                        <td md-cell>{{user.discount}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </md-table-container>
+
+        <md-table-pagination md-limit="$ctrl.query.limit" md-limit-options="$ctrl.options.limitOptions" md-page="$ctrl.query.page" md-total="{{$ctrl.users().length}}" md-page-select="$ctrl.options.pageSelect"></md-table-pagination>
+    </md-card>
+
 </div>

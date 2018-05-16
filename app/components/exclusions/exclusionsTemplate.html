@@ -1,0 +1,6 @@
+<!DOCTYPE html>
+<div layout="row" layout-padding>
+    <span class="md-headline" ng-if="$ctrl.selectedUser().name">Exclusions of user: {{$ctrl.selectedUser().name}} - {{$ctrl.selectedUser().username}}</span>
+
+    <no-user-selected ng-if="!$ctrl.selectedUser().name"></no-user-selected>
+</div>

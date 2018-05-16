@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<md-sidenav flex md-component-id="left" class="md-sidenav-left" md-is-locked-open="$mdMedia('gt-sm')" md-whiteframe="4" style="width: 256px">
+    <md-toolbar md-whiteframe="2"  md-colors="{background: 'grey-100'}">
+        <div class="md-toolbar-tools" style="padding-left: 0;" layout="row" layout-align="center center">
+            <img ng-src="./assets/img/conrad_business_logo_regular.svg" style="max-height: 100%; padding: 8px">
+        </div>
+    </md-toolbar>
+
+    <md-list>
+        <md-list-item ng-repeat="route in $ctrl.routes()" ng-click="$ctrl.changeRoute(route)" layout="row" layout-align="start center" ng-class="{'active-route': $ctrl.isActiveRoute(route)}">
+            <md-icon md-svg-icon="{{route.icon}}"></md-icon>
+            {{route.name}}
+        </md-list-item>
+    </md-list>
+
+    <div flex></div>
+
+    <md-divider></md-divider>
+
+    <div layout-margin layout="column" layout-align="center stretch">
+        <span>Language</span>
+
+        <md-menu layout="row" layout-align="end center">
+            <md-button class="md-raised" ng-click="$mdMenu.open($event)">
+                <img class="flag-icon" ng-src="./assets/img/i18n/{{$ctrl.currentLanguage().id}}.svg">
+                <span>{{$ctrl.currentLanguage().name}}</span>
+                <md-icon md-svg-icon="menu-down"></md-icon>
+            </md-button>
+            <md-menu-content>
+                <md-menu-item ng-repeat="language in $ctrl.languages()">
+                    <md-button ng-click="$ctrl.selectLanguage(language)">
+                        <img class="flag-icon" ng-src="./assets/img/i18n/{{language.id}}.svg">
+                        <span>{{language.name}}</span>
+                    </md-button>
+                </md-menu-item>
+            </md-menu-content>
+        </md-menu>
+
+    </div>
+
+</md-sidenav>
