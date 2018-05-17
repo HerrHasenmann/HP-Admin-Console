@@ -7,7 +7,7 @@
             <search-input no-dropdown="true"></search-input>
             <md-button class="md-raised md-primary" ng-class="{'md-icon-button':$root.$mdMedia('xs')}">
                 <md-icon md-svg-icon="account-plus"></md-icon>
-                <span hide-xs>create user</span>
+                <span hide-xs>{{"users.createUser" | translate}}</span>
             </md-button>
         </div>
 
@@ -16,13 +16,13 @@
                 <thead md-head md-order="$ctrl.query.order">
                     <tr md-row>
                         <th md-column></th>
-                        <th md-column md-order-by="name"><span>Name</span></th>
-                        <th md-column md-order-by="username"><span>Username</span></th>
-                        <th md-column md-order-by="password">Password</th>
-                        <th md-column md-order-by="details.contactPerson.email">Customer Contact</th>
-                        <th md-column md-order-by="details.sales.responsibleInternal">Conrad Contact</th>
-                        <th md-column md-order-by="exclusions">Exclusions</th>
-                        <th md-column md-order-by="discount">Discount</th>
+                        <th md-column md-order-by="name"><span>{{"users.name" | translate}}</span></th>
+                        <th md-column md-order-by="username"><span>{{"users.username" | translate}}</span></th>
+                        <th md-column md-order-by="password">{{"users.password" | translate}}</th>
+                        <th md-column md-order-by="details.contactPerson.email">{{"users.customerContact" | translate}}</th>
+                        <th md-column md-order-by="details.sales.responsibleInternal">{{"users.conradContact" | translate}}</th>
+                        <th md-column md-order-by="exclusions">{{"users.exclusions" | translate}}</th>
+                        <th md-column md-order-by="discount">{{"users.discount" | translate}}</th>
                     </tr>
                 </thead>
                 <tbody md-body>
@@ -44,7 +44,7 @@
             </table>
         </md-table-container>
 
-        <md-table-pagination md-limit="$ctrl.query.limit" md-limit-options="$ctrl.options.limitOptions" md-page="$ctrl.query.page" md-total="{{$ctrl.users().length}}" md-page-select="$ctrl.options.pageSelect"></md-table-pagination>
+        <md-table-pagination md-label="{{$ctrl.paginationTranslation()}}" md-limit="$ctrl.query.limit" md-limit-options="$ctrl.options.limitOptions" md-page="$ctrl.query.page" md-total="{{$ctrl.users().length}}" md-page-select="$ctrl.options.pageSelect"></md-table-pagination>
     </md-card>
 
 </div>

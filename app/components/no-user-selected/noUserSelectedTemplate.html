@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <div layout-margin>
-    <span>Please select a user first:</span>
 
-    <div layout="row">
+    <div>
+        <md-icon md-svg-icon="comment-alert-outline"></md-icon>
+        <span>{{"noUserSelected.pleaseSelectUser" | translate}}:</span>
+    </div>
+
+
+    <div layout="row" layout-xs="column" layout-sm="column" layout-align="start center"  layout-align-sm="start stretch">
         <md-card layout-margin>
-            <span>Either by directly searching:</span>
+            <span>{{"noUserSelected.selectBySearch" | translate}}</span>
             <search-input></search-input>
         </md-card>
+        <span style="text-align: center">{{"noUserSelected.or" | translate}}</span>
         <md-card layout-margin>
-            <span>Or choosing from the list of available users</span>
+            <span>{{"noUserSelected.chooseFromList" | translate}}</span>
             <md-button class="md-primary" ng-click="$ctrl.gotoUsers()">
-                Goto User List
+                {{"noUserSelected.gotoUserList" | translate}}
                 <md-icon md-svg-icon="arrow-right"></md-icon>
             </md-button>
         </md-card>

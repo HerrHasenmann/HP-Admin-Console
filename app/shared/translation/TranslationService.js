@@ -1,3 +1,7 @@
+/*
+* Service for handling different languages
+*/
+
 app.service("TranslationService", ["$translate", function ($translate) {
 
     var serv = this;

@@ -1,3 +1,44 @@
 {
-  "TEST": "TestDE"
+  "general": {
+    "users": "Nutzer",
+    "mappings": "Zuordnungen",
+    "exclusions": "Ausschlüsse"
+  },
+  "menu": {
+    "users": "@:general.users",
+    "settings": "Einstellungen",
+    "mappings": "@:general.mappings",
+    "exclusions": "@:general.exclusions"
+  },
+  "language": {
+    "language": "Sprache"
+  },
+  "users": {
+    "name": "Name",
+    "username": "Benutzername",
+    "password": "Passwort",
+    "customerContact": "Kundenkontakt",
+    "conradContact": "Conradkontakt",
+    "exclusions": "@:general.exclusions",
+    "discount": "Rabatt",
+    "createUser": "Nutzer erstellen",
+    "selectedUser": "Ausgewählter Nutzer"
+  },
+  "search": {
+    "searchHintLong": "Nutzersuche nach Name, Benutzername, OCI-Kundennumer",
+    "searchHintShort": "Nutzersuche",
+    "noMatchesFound": "Keine Übereinstimmung gefunden"
+  },
+  "dataTable": {
+    "page": "Seite",
+    "rowsPerPage": "Zeilen pro Seite",
+    "of": "von"
+  },
+  "noUserSelected": {
+    "pleaseSelectUser": "Bitte wählen Sie zuerst einen Nutzer",
+    "selectBySearch": "Suchen Sie nach einem Nutzer",
+    "or": "oder",
+    "chooseFromList": "Wählen Sie von der Nutzerliste",
+    "gotoUserList": "Zur Nutzerliste"
+  }
 }

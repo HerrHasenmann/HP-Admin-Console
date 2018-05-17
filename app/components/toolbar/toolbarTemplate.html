@@ -6,9 +6,7 @@
             <md-icon md-svg-icon="menu"></md-icon>
         </md-button>
 
-        <span>{{'TEST'|translate}}</span>
-
-        <span hide-xs ng-if="$ctrl.selectedUser()" style="padding-right: 8px">Selected User: </span>
+        <span hide-xs ng-if="$ctrl.selectedUser()" style="padding-right: 8px">{{"users.selectedUser" | translate}}:</span>
 
         <md-chips md-readonly ng-if="$ctrl.selectedUser()">
             <md-chip layout="row" layout-no-wrap>
@@ -24,7 +22,7 @@
 
         <md-button ng-class="{'md-icon-button':$root.$mdMedia('xs')}" ng-if="$ctrl.showCreateButton()">
             <md-icon md-svg-icon="account-plus"></md-icon>
-            <span hide-xs>create user</span>
+            <span hide-xs>{{"users.createUser" | translate}}</span>
         </md-button>
 
     </div>

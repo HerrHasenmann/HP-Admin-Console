@@ -1,3 +1,7 @@
+/*
+* Controller which is available in the hole application
+*/
+
 app.controller("RootController", ["$rootScope", "$mdMedia", function ($rootScope, $mdMedia) {
 
     $rootScope.safeApply = function(fn) {
@@ -11,7 +15,9 @@ app.controller("RootController", ["$rootScope", "$mdMedia", function ($rootScope
         }
     };
 
+    /*
+    * Make the media query service available in the html
+    */
     $rootScope.$mdMedia = $mdMedia;
 
-    
 }]);

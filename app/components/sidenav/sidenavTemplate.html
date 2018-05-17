@@ -9,7 +9,7 @@
     <md-list>
         <md-list-item ng-repeat="route in $ctrl.routes()" ng-click="$ctrl.changeRoute(route)" layout="row" layout-align="start center" ng-class="{'active-route': $ctrl.isActiveRoute(route)}">
             <md-icon md-svg-icon="{{route.icon}}"></md-icon>
-            {{route.name}}
+            {{route.name | translate}}
         </md-list-item>
     </md-list>
 
@@ -18,7 +18,7 @@
     <md-divider></md-divider>
 
     <div layout-margin layout="column" layout-align="center stretch">
-        <span>Language</span>
+        <span>{{"language" | translate}}</span>
 
         <md-menu layout="row" layout-align="end center">
             <md-button class="md-raised" ng-click="$mdMenu.open($event)">

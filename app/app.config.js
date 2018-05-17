@@ -42,6 +42,7 @@ app.config(["$routeProvider", function ($routeProvider) {
     $routeProvider.otherwise("/");
 }]);
 
+// Settings for the translation service
 app.config(['$translateProvider', function($translateProvider) {
     $translateProvider.useStaticFilesLoader({
         prefix: './i18n/locale-',

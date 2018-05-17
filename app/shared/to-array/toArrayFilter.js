@@ -1,3 +1,7 @@
+/*
+* Filter for converting an object to an array
+*/
+
 app.filter('toArray', function() {
     return function(obj) {
         const result = [];

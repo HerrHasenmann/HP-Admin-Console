@@ -5,22 +5,22 @@ app.service("RouteService", ["$location", function ($location) {
     var routes = {
         "users": {
             "id": "users",
-            "name": "Users",
+            "name": "menu.users",
             "icon": "account-group"
         },
         "settings": {
             "id": "settings",
-            "name": "Settings",
+            "name": "menu.settings",
             "icon": "settings"
         },
         "mappings": {
             "id": "mappings",
-            "name": "Mappings",
+            "name": "menu.mappings",
             "icon": "chart-gantt"
         },
         "exclusions": {
             "id": "exclusions",
-            "name": "Exclusions",
+            "name": "menu.exclusions",
             "icon": "file-tree"
         }
     };

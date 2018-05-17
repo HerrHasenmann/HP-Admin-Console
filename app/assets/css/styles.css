@@ -1,22 +1,24 @@
+/*
+    General fixes for style issues
+*/
 md-input-container.md-no-error div.md-errors-spacer:empty {
     min-height: 5px;
 }
-
-/*md-divider {*/
-    /*min-width: 1px;*/
-    /*min-height: 1px;*/
-    /*border-top: 1px solid !important;*/
-    /*border-right: 1px solid !important;*/
-/*}*/
 
 md-list-item md-icon {
     margin: initial;
 }
 
+/*
+    Style for sidenav
+*/
 md-sidenav .active-route {
     background-color: #eaeaea;
 }
 
+/*
+    Style for md-autocomplete(search)
+*/
 .autocomplete-custom-template li {
     border-bottom: 1px solid #ccc;
     height: auto;
@@ -42,6 +44,9 @@ md-sidenav .active-route {
     height: 40px;
 }
 
+/*
+    Style translation
+*/
 .flag-icon {
     width: 36px;
     height: 24px;

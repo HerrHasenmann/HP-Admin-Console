@@ -1,3 +1,9 @@
+/*
+* Component for the sidenav menu on the left side. The sidenav is fixed on the left side for larger (md, lg, xl) screens
+* and retracts and can be opened via a menu button on the smaller screens (xs, sm). The sidenav is responsible for
+* changing the language.
+*/
+
 app.component("sidenav", {
     templateUrl: "./components/sidenav/sidenavTemplate.html",
     controller: ["UserService", "RouteService", "TranslationService", "$mdSidenav", SidenavController]
@@ -23,7 +29,6 @@ function SidenavController(UserService, RouteService, TranslationService, $mdSid
     };
 
     ctrl.changeRoute = function (route) {
-
         $mdSidenav("left").close();
         RouteService.changeRoute(route);
     };

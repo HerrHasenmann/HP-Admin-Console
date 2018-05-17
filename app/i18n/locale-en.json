@@ -1,3 +1,44 @@
 {
-  "TEST": "TestEN"
+  "general": {
+    "users": "Users",
+    "mappings": "Mappings",
+    "exclusions": "Exclusions"
+  },
+  "menu": {
+    "users": "@:general.users",
+    "settings": "Settings",
+    "mappings": "@:general.mappings",
+    "exclusions": "@:general.exclusions"
+  },
+  "language": {
+    "language": "Language"
+  },
+  "users": {
+    "name": "Name",
+    "username": "username",
+    "password": "Password",
+    "customerContact": "Cutomer Contact",
+    "conradContact": "Conrad Contact",
+    "exclusions": "@:general.exclusions",
+    "discount": "Discount",
+    "createUser": "Create User",
+    "selectedUser": "Selected User"
+  },
+  "search": {
+    "searchHintLong": "Search for User by Name, Username, OCI-Number",
+    "searchHintShort": "Search for User",
+    "noMatchesFound": "No matches found"
+  },
+  "dataTable": {
+    "page": "Page",
+    "rowsPerPage": "Rows per Page",
+    "of": "of"
+  },
+  "noUserSelected": {
+    "pleaseSelectUser": "Please choose a user first",
+    "selectBySearch": "Search for an user",
+    "or": "or",
+    "chooseFromList": "Choose from the user list",
+    "gotoUserList": "Goto user list"
+  }
 }

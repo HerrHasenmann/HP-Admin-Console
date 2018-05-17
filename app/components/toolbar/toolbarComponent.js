@@ -1,3 +1,7 @@
+/*
+* Component for the toolbar. The toolbar shows the selected user and adds the ability to add a new user.
+*/
+
 app.component("toolbar", {
     templateUrl: "./components/toolbar/toolbarTemplate.html",
     controller: ["UserService", "RouteService", "$mdSidenav", ToolbarController]
@@ -24,8 +28,4 @@ function ToolbarController(UserService, RouteService, $mdSidenav) {
             return true;
         }
     };
-    
-    ctrl.title = function () {
-        return RouteService.getCurrentRoute().name;
-    }
 }

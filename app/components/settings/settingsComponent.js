@@ -1,3 +1,7 @@
+/*
+* Component for the settings feature
+*/
+
 app.component("settings", {
     templateUrl: "./components/settings/settingsTemplate.html",
     controller: ["UserService", SettingsController]

@@ -1,3 +1,7 @@
+/*
+* Component for the mapping feature
+*/
+
 app.component("mappings", {
     templateUrl: "./components/mappings/mappingsTemplate.html",
     controller: ["UserService", "$scope", MappingsController]

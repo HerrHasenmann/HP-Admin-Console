@@ -1,16 +1,17 @@
+/*
+* Component for searching for a user, can be used with an autocompletion dropdown or without
+*/
+
 app.component("searchInput", {
     templateUrl: "./components/search/search-input/searchInputTemplate.html",
-    controller: ["UserService", "$mdMedia", SearchController],
+    controller: ["UserService", "$mdMedia", "$translate", SearchController],
     bindings: {
         noDropdown: "<"
     }
 });
 
-function SearchController(UserService, $mdMedia) {
+function SearchController(UserService, $mdMedia, $translate) {
     var ctrl = this;
-
-    ctrl.selectedItem;
-    ctrl.searchText;
 
     ctrl.setSelectedUser = function (item) {
         console.log("triggered setselectedUser");
@@ -26,11 +27,11 @@ function SearchController(UserService, $mdMedia) {
     };
 
     ctrl.getPlaceholder = function () {
-        return $mdMedia('xs') ? 'Search for User' : 'Search for User by Name, Username, OCI-Number'
+        return $mdMedia('xs') ? $translate.instant("search.searchHintShort") : $translate.instant("search.searchHintLong")
     };
 
     ctrl.getStyle = function () {
-        return $mdMedia('xs') ? {'width':'inherit'} : {'width': '380px'};
+        return $mdMedia('xs') ? {'width':'inherit'} : {'width': '400px'};
     };
 
 }

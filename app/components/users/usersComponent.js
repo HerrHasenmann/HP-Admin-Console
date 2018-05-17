@@ -1,16 +1,15 @@
+/*
+* Component for the user list. Provides the ability to search for an user, select an user and add a new user. Displays
+* the search results inside a data-table.
+*/
+
 app.component("users", {
     templateUrl: "./components/users/usersTemplate.html",
-    controller: ["UserService", "$scope", UsersController]
+    controller: ["UserService", "$translate", UsersController]
 });
 
-function UsersController(UserService) {
+function UsersController(UserService, $translate) {
     var ctrl = this;
-
-    ctrl.users = function () {
-        return UserService.getSearchResults();
-    };
-
-    // Data-Table
 
     ctrl.selected = [];
 
@@ -24,14 +23,27 @@ function UsersController(UserService) {
         autoSelect: true,
         rowSelect: true,
         pageSelect: true,
-        limitOptions: [10,20,30]
+        limitOptions: [10, 20, 30]
     };
 
-    ctrl.selectUser = function(user){
+    ctrl.users = function () {
+        return UserService.getSearchResults();
+    };
+
+    ctrl.selectUser = function (user) {
         UserService.setSelectedUser(user)
     };
-    
+
     ctrl.selectedUser = function () {
         return UserService.getSelectedUser();
+    };
+
+    ctrl.paginationTranslation = function () {
+        return {
+            of: $translate.instant("dataTable.of"),
+            page: $translate.instant("dataTable.page"),
+            rowsPerPage: $translate.instant("dataTable.rowsPerPage")
+        }
     }
+
 }
